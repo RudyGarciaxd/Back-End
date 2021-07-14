@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name= "f1" action="#" method="POST" onsubmit="validacion();">
+        <p>Nombre:<input type="text" id="nombre"></p>
+        <p>Año de nacimiento: <input type="number" min="2000" max="2021" id="añodenacimiento"></p>
+        <p>Estatura: <input type="text" id="estatura"></p>
+        <p>Sexo: 
+            <input type="radio" name="genero" id="Hombre">Hombre 
+            <input type="radio" name="genero" id="Mujer">Mujer
+        </p>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Borrar">
+    </form>
+    <script>
+        function validacion(){
+            var valor;
+            valor = document.getElementById("nombre").value;
+            if (valor == null || valor.length == 0 || valor === ""){
+                alert("La casilla Nombre esta vacia, rellenala por favor");
+            } else if(!isNaN(valor)){
+                    alert("La casilla Nombre no debe ser un numero");
+                }
+
+            valor = document.getElementById("añodenacimiento").value;
+            if (valor == null || valor.length == 0 || valor === ""){
+                alert("La casilla Año de nacimiento esta vacia, rellenala por favor");
+            } else if(valor < 2000){
+                alert("La casilla esta llenada con un año no permitido, por favor, intentar con uno mayor a al año 2000")
+            } else if(valor => 2021){
+                alert("Imposible, no puedes haber nacido en >= 2022, Oh si? ;-;");
+            }
+
+            valor = document.getElementById("estatura").value;
+            if(valor == null || valor.length == 0 || valor === ""){
+                alert("La casilla Estatura esta vacia, rellenala por favor");
+            } else if(isNaN(valor)){
+                alert("La casilla Estatura debe ser rellenada con numeros");
+            }
+
+            var s="no";
+	        for(var i=0;i<document.f1.genero.length;i++){
+		        if(document.f1.genero[i].checked){
+			        alert("marco:"+document.f1.genero[i].value);
+			        s="si";
+		        }
+	        }
+	        if(s=="no"){
+		        alert("Debe seleccionar hombre o mujer");
+	        }
+        }
+    </script>
+</body>
+</html>
